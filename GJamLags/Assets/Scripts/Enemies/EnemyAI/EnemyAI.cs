@@ -77,12 +77,12 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator PerformAttack() 
     {
-        Debug.Log("ATAQUE - activando hitbox de daño");
+        Debug.Log("ATAQUE - activando hitbox de daÃ±o");
         attackHitbox.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
 
-        Debug.Log("ATAQUE - desactivando hitbox de daño");
+        Debug.Log("ATAQUE - desactivando hitbox de daÃ±o");
         attackHitbox.enabled = false;
     }
 
@@ -91,7 +91,7 @@ public class EnemyAI : MonoBehaviour
         if (((1 << collision.gameObject.layer) & playerLayer) != 0) 
         {
             Debug.Log("ATAQUE CONECTADO - jugador golpeado");
-            //lógica del player health
+            //lÃ³gica del player health
         }
     }
 
@@ -115,9 +115,9 @@ public class EnemyAI : MonoBehaviour
         }
 
         float distance = Vector2.Distance(transform.position, EnemyVision.Player.position);
-        if (distance > attackRange) 
+        if (distance <= attackRange) 
         {
-            Debug.Log("Jugador fuera de rango - volviendo a persecucion");
+            currentState = enemyState.Attack;
         }
     }
 
